@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>hospital management system</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+  .container-fluid{
+    background-color: aquamarine;
+  }
+  .form{
+    margin-left:20px;
+    background-color: rgb(235, 230, 235);
+    text-align: center;
+    float: left;
+    width: 40%;
+    height: auto;
+    padding:3%;
+
+  }
+  .h4{
+    font-size: 40px;
+  }
+
+  .text{ 
+    text-align: center;
+    padding:2%;
+  }
+  
+  .summary{
+    font-size:20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 5px;
+    padding: 3%;
+  }
+  .about{ 
+    text-align: center;
+    color: whitesmoke;
+    background-color: rgb(6, 19, 136);
+    height: auto;
+    padding: 3%;
+    flex-direction: column;
+  }
+  .body{
+    background-color: whitesmoke;
+  }
+
+
+  
+
+</style>
+</head>
+<body class="body">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="../static/image/hospital logo.jpeg" width="10%" height="10%">
+    <a class="navbar-brand" href="#" style="color:black; font-size: 30px;">hospital management</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">about</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            contact
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">email</a></li>
+            <li><a class="dropdown-item" href="#">phone.no</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Hospital loction</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true"></a>
+        </li>
+      </ul>
+      <form class="d-flex" role="menu">
+        <a href="register" id="admin"class="btn btn-outline-success" type="button" 
+        style="background-color: antiquewhite; font-weight: bold;" >register</a>
+        <a href="login" id="admin"class="btn btn-outline-success" type="button" 
+         style="background-color: antiquewhite; font-weight: bold;" >login</a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<form class="form" method="POST" action="user">
+  {% csrf_token %}
+  {% for msg in messages%}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>HEY!</strong>{{msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  <div class=" container">
+      <h4 class="h4">APPOINTMENT</h4><hr>
+    <div class="mb-3">
+      <label for="formFile" class="form-label">NAME</label>
+      <input class="form-control" type="text" name="name">
+    </div>
+    <div class="mb-3">
+      <label for="formFileMultiple" class="form-label">AGE</label>
+      <input class="form-control" type="number" name="age">
+    </div>
+    <div class="mb-3">
+      <label for="formFileDisabled" class="form-label">PHONENUMBER</label>
+      <input class="form-control" type="text" name="phonenumber">
+    </div>
+    <div class="mb-3">
+      <label for="formFileSm" class="form-label">ADDRESS</label>
+      <input class="form-control form-control-sm" name="address" type="text">
+    </div>
+    <div>
+      <label for="formFileLg" class="form-label">TYPE YOUR HEALTH ISSUES</label>
+      <select name="issues" class="issues">
+        <option value="womwn's health">womwn's health</option>
+        <option value="skin&hair">skin&hair</option>
+        <option value="child specialist">child specialist</option>
+        <option value="genral physician">genral physician</option>
+        <option value="dental care">dental care</option>
+        <option value="homoeopathy">homoeopathy</option>
+        <option value="other">other</option>
+    </select>
+    </div><br>
+    <div>
+      <label for="formFileLg" class="form-label">GENDER</label>
+      <select name="gender" id="gender">
+        <option value="male">male</option>
+        <option value="women">women</option>
+        <option value="other">other</option>
+      </select>
+    </div>
+    </div><br>
+    <button type="submit" class="btn btn-primary">bookingnow</button><br>
+</form>
+<div>
+  <img src="../static/image/website 1.jpeg" width="55%" height="80%" style="margin-left: 20px; padding: 4%;" >
+</div><br><hr>
+<h2 class="text" style="text-align: center; font-weight: bold; ">Hospital Appointment Scheduling Software App for Clinics,<h2 style="text-align: center; font-weight: bold;">Hospitals and Doctors.</h2>
+<p class="summary">Connects and integrates all your appointment channels – Website, Leads, Mobile, and front desk.
+Everything is in a central calendar! Set up appointments for your patients in the most effective way 
+with the help of the Hospital Appointment Scheduling Software App. The doctors will be able to access,
+reception and appointments, everything in one calendar making it more simplified and organized.
+This is a tailor-made software for Clinics, Hospitals, and Doctors allowing a smooth flow in the operations, 
+thereby replacing the manual work with ease and comfort through medical software.</p><hr>
+
+<div class="about">
+  <h4 style="font-weight:bold;">hospital</h4>
+  
+  <address>
+    DocPulse Technologies, 91080 WORKSPACE (JPN),<br>
+    # 951, 24th Main Road, Marenahalli, 2nd Phase,<br>
+    J. P. Nagar, Bengaluru, Karnataka 560078 <br>
+    contactus@docpulse.com <br>
+    Support Team <br>
+    <br>
+    08046837034 <br>
+    Sales Team <br>
+    <br>
+    08069484993 <br>
+    <br>
+    About Us <br>
+    Privacy Policy <br>
+    </address>
+    </div>
+
+     
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+crossorigin="anonymous"></script>    
+</body>
+</html>
+
